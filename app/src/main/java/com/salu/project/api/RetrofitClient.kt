@@ -11,7 +11,7 @@ object RetrofitClient {
 
     private fun getRetrofit(context: Context): Retrofit {
         if (retrofit == null) {
-            val sessionManager = SessionManager(context)
+            val sessionManager = SessionManager(context.applicationContext)
 
             val client = OkHttpClient.Builder()
                 .addInterceptor { chain ->
@@ -34,4 +34,5 @@ object RetrofitClient {
 
     fun getUserApi(context: Context): UserApi = getRetrofit(context).create(UserApi::class.java)
     fun getProductApi(context: Context): ProductApi = getRetrofit(context).create(ProductApi::class.java)
+    fun getCartApi(context: Context): CartApi = getRetrofit(context).create(CartApi::class.java)
 }

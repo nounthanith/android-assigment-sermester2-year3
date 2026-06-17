@@ -1,4 +1,4 @@
-package com.salu.project.ui
+package com.salu.project.adapter
 
 import android.view.LayoutInflater
 import android.view.View
