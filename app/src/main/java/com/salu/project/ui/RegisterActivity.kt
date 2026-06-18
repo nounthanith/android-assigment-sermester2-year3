@@ -35,7 +35,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val user = User(name, email, password, "user")
+            val user = User(name = name, email = email, password = password)
 
             lifecycleScope.launch {
                 try {

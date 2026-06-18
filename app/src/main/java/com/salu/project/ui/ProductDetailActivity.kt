@@ -61,6 +61,8 @@ class ProductDetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(productImage)
             .placeholder(android.R.drawable.ic_menu_gallery)
+            .error(android.R.drawable.stat_notify_error)
+            .centerCrop()
             .into(ivProductImage)
 
         adapter = ProductAdapter(emptyList()) { product ->

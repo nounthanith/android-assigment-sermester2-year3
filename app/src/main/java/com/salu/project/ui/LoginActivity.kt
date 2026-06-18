@@ -44,6 +44,9 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            // Clear any stale session/token before login to avoid 401
+            sessionManager.logout()
+
             val credentials = mapOf("email" to email, "password" to password)
 
             lifecycleScope.launch {
@@ -55,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                     response.user.token?.let { sessionManager.saveAuthToken(it) }
                     sessionManager.saveUser(response.user.name, response.user.email)
 
-                    Toast.makeText(this@LoginActivity, response.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity, "Login Success", Toast.LENGTH_LONG).show()
                     
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     finish()

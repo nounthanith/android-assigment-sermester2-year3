@@ -115,6 +115,12 @@ class HomeFragment : Fragment() {
                 val categories = api.getCategories()
                 val products = api.getProducts()
                 
+                android.util.Log.d("HomeFragment", "Categories count: ${categories.size}")
+                categories.forEach { android.util.Log.d("HomeFragment", "Category: ${it.name}, Image: ${it.image}") }
+                
+                android.util.Log.d("HomeFragment", "Products count: ${products.size}")
+                products.forEach { android.util.Log.d("HomeFragment", "Product: ${it.name}, Image: ${it.image}") }
+
                 categoryAdapter.updateCategories(categories)
                 productAdapter.updateProducts(products)
             } catch (e: Exception) {

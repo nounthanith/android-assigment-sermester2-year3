@@ -30,13 +30,19 @@ class ProductAdapter(
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         val product = products[position]
-        holder.tvProductName.text = product.name
-        holder.tvProductDescription.text = product.description
-        holder.tvProductPrice.text = "$${product.price}"
+        holder.tvProductName.text = product.name ?: "Unknown Product"
+        holder.tvProductDescription.text = product.description ?: ""
+        holder.tvProductPrice.text = "$${product.price ?: 0.0}"
+
+        val imageUrl = product.image?.takeIf { it.isNotEmpty() }
+        
+        android.util.Log.d("ProductAdapter", "Binding product: ${product.name}, image: $imageUrl")
 
         Glide.with(holder.itemView.context)
-            .load(product.image)
+            .load(imageUrl)
             .placeholder(android.R.drawable.ic_menu_gallery)
+            .error(android.R.drawable.stat_notify_error)
+            .centerCrop()
             .into(holder.ivProductImage)
 
         holder.itemView.setOnClickListener {

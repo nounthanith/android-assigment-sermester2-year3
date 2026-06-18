@@ -5,13 +5,22 @@ import com.google.gson.annotations.SerializedName
 data class Product(
     @SerializedName("_id")
     val id: String,
-    val name: String,
-    val description: String,
-    val price: Double,
-    val image: String,
-    val category: String,
-    val stock: Int,
-    val isActive: Boolean,
-    val createdAt: String,
-    val updatedAt: String
+    @SerializedName("name")
+    val name: String?,
+    @SerializedName("description")
+    val description: String?,
+    @SerializedName("price")
+    val price: Double?,
+    @SerializedName("image")
+    val image: String?,
+    @SerializedName("category")
+    val category: String?,
+    @SerializedName("stock")
+    val stock: Int?,
+    @SerializedName("isActive")
+    val isActive: Boolean?,
+    @SerializedName("createdAt")
+    val createdAt: String?,
+    @SerializedName("updatedAt")
+    val updatedAt: String?
 )

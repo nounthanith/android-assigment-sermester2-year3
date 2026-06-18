@@ -3,8 +3,10 @@ package com.salu.project.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.salu.project.R
 import com.salu.project.model.Category
 
@@ -14,7 +16,7 @@ class CategoryAdapter(
 ) : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
 
     class CategoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //val ivImage: ImageView = view.findViewById(R.id.ivCategoryImage)
+        val ivImage: ImageView = view.findViewById(R.id.ivCategoryImage)
         val tvName: TextView = view.findViewById(R.id.tvCategoryName)
     }
 
@@ -26,9 +28,17 @@ class CategoryAdapter(
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         val category = categories[position]
-        holder.tvName.text = category.name
+        holder.tvName.text = category.name ?: "Unknown"
 
+        val imageUrl = category.image?.takeIf { it.isNotEmpty() }
+        
+        android.util.Log.d("CategoryAdapter", "Binding category: ${category.name}, image: $imageUrl")
 
+        Glide.with(holder.itemView.context)
+            .load(imageUrl)
+            .placeholder(android.R.drawable.ic_menu_gallery)
+            .error(android.R.drawable.stat_notify_error)
+            .into(holder.ivImage)
 
         holder.itemView.setOnClickListener { onCategoryClick(category) }
     }

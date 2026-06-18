@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Project" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.Theme.Project" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/red</item>
         <item name="colorPrimaryDark">@color/red_dark</item>
@@ -9,14 +9,14 @@
 
     <style name="Theme.Project" parent="Base.Theme.Project" />
 
-    <style name="LogoutButton" parent="Widget.AppCompat.Button">
+    <style name="LogoutButton" parent="Widget.MaterialComponents.Button">
         <item name="android:backgroundTint">@color/red</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="RoundedImageView" parent="">
+    <style name="RoundedImageView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">16dp</item>
     </style>
